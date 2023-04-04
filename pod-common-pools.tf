@@ -2,7 +2,7 @@
 # Mac tip: Use CMD+K +C to comment out blocks.   CMD+K +U will un-comment blocks of code
 
 module "imm_pool_mod" {
-  source = "github.com/bywhite/cen-iac-imm-dev-pod1-mods//imm-pod-pools-mod"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-pod-pools-mod"
   
   # external sources
   organization    = local.org_moid

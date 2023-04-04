@@ -9,7 +9,7 @@
 
 
 module "imm_pod_qos_mod" {       
-  source = "github.com/bywhite/cen-iac-imm-dev-pod1-mods//imm-pod-server-qos-mod"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-pod-server-qos-mod"
 
 # =============================================================================
 # Org external references
