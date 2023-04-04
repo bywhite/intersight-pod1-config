@@ -38,8 +38,10 @@ module "intersight_pod1_domain_1" {                                             
 
   chassis_9508_count = 5
   # Default chassis count is 5
-  # chassis_imc_access_vlan    = 999
 
+
+
+  # chassis_imc_access_vlan    = 999
   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
 
   # =============================================================================
