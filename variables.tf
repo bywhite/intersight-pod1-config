@@ -13,7 +13,7 @@
 
 # https://intersight.com/an/settings/api-keys/
 ## Generate API key to obtain the API key and secret key
-variable "api_key" {
+variable "apikey" {
     description = "API key for Intersight account"
     type = string
 }

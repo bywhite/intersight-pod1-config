@@ -14,7 +14,7 @@ terraform {
     organization = "bywhite"
 
     workspaces {
-      name = "cen-iac-imm-dev-pod1"
+      name = "intersight-dc1-pod1"
     }
   }
 
@@ -28,7 +28,7 @@ terraform {
 }
 
 provider "intersight" {
-    apikey = var.api_key
+    apikey = var.apikey
     secretkey = var.secretkey
     endpoint = var.endpoint
 }
