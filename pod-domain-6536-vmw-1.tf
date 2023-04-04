@@ -7,7 +7,7 @@
 
 
 module "intersight_pod1_domain_1" {                                             # <-- change when copying domain
-  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536" #?ref=v1.0.0"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536?ref=v1.0.0"
 
   # =============================================================================
   # External References
