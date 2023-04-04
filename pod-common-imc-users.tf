@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 
 # Consumed by Server Profiles or Sever Templates with:
-  # IMC User Policy  
+# IMC User Policy  
 #   policy_bucket {
 #     moid = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
 #     object_type = "iam.EndPointUserPolicy"
@@ -13,9 +13,9 @@
 
 
 ## Standard Local User Policy for all local IMC users
-resource "intersight_iam_end_point_user_policy" "pod_user_policy_1"  {
-  description     = "Local IMC User Policy"
-  name            = "${local.pod_policy_prefix}-imc-user-policy1"
+resource "intersight_iam_end_point_user_policy" "pod_user_policy_1" {
+  description = "Local IMC User Policy"
+  name        = "${local.pod_policy_prefix}-imc-user-policy1"
   password_properties {
     enforce_strong_password  = false
     enable_password_expiry   = false
@@ -25,17 +25,17 @@ resource "intersight_iam_end_point_user_policy" "pod_user_policy_1"  {
     grace_period             = 0
     object_type              = "iam.EndPointPasswordProperties"
   }
- organization {
-   moid        = local.org_moid
-   object_type = "organization.Organization"
- }
- dynamic "tags" {
-   for_each = local.pod_tags
-   content {
-     key   = tags.value.key
-     value = tags.value.value
-   }
- }
+  organization {
+    moid        = local.org_moid
+    object_type = "organization.Organization"
+  }
+  dynamic "tags" {
+    for_each = local.pod_tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
 }
 
 ##  Admin user
@@ -43,8 +43,8 @@ resource "intersight_iam_end_point_user_policy" "pod_user_policy_1"  {
 resource "intersight_iam_end_point_user" "admin1" {
   name = "admin"
   organization {
-    moid = local.org_moid
-   object_type = "organization.Organization"
+    moid        = local.org_moid
+    object_type = "organization.Organization"
   }
   dynamic "tags" {
     for_each = local.pod_tags
@@ -75,7 +75,7 @@ resource "intersight_iam_end_point_user_role" "admin1" {
   }
   end_point_role {
     moid = data.intersight_iam_end_point_role.imc_admin.results[0].moid
-  
+
   }
   dynamic "tags" {
     for_each = local.pod_tags
@@ -95,16 +95,16 @@ resource "intersight_iam_end_point_user" "ro_user1" {
   name = "ro-user1"
 
   organization {
-    moid = local.org_moid
-   object_type = "organization.Organization"
+    moid        = local.org_moid
+    object_type = "organization.Organization"
   }
- dynamic "tags" {
-   for_each = local.pod_tags
-   content {
-     key   = tags.value.key
-     value = tags.value.value
-   }
- }
+  dynamic "tags" {
+    for_each = local.pod_tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
 }
 
 # This data source retrieves a system built-in role that we want to assign to the user.
@@ -136,11 +136,11 @@ resource "intersight_iam_end_point_user_role" "ro_user1" {
   end_point_role {
     moid = data.intersight_iam_end_point_role.imc_readonly.results[0].moid
   }
- dynamic "tags" {
-   for_each = local.pod_tags
-   content {
-     key   = tags.value.key
-     value = tags.value.value
-   }
- }
+  dynamic "tags" {
+    for_each = local.pod_tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
 }

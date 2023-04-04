@@ -8,24 +8,24 @@
 # # Accordingly, the resource "intersight_fabric_system_qos_policy" is created with the domain fabric module instead of this module.
 
 
-module "imm_pod_qos_mod" {       
+module "imm_pod_qos_mod" {
   source = "github.com/bywhite/intersight-pod1-modules//imm-pod-server-qos-mod"
 
-# =============================================================================
-# Org external references
-# -----------------------------------------------------------------------------
+  # =============================================================================
+  # Org external references
+  # -----------------------------------------------------------------------------
 
   org_id = local.org_moid
 
-# =============================================================================
-# Naming and tagging
-# -----------------------------------------------------------------------------
+  # =============================================================================
+  # Naming and tagging
+  # -----------------------------------------------------------------------------
 
   # Every QoS policy created will have this prefix in its name
   policy_prefix = local.pod_policy_prefix
 
   # This is the default description for IMM objects created
-  description   = "built by Terraform for ${local.pod_policy_prefix}"
+  description = "built by Terraform for ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
   tags = local.pod_tags

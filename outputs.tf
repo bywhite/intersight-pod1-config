@@ -1,18 +1,18 @@
 # Output as needed to reveal Objects created
 
 output "intersight_organization_name" {
-  value         = var.organization
-  description   = "Default is default, otherwise set in TFCB Variable"
+  value       = var.organization
+  description = "Default is default, otherwise set in TFCB Variable"
 }
 
 output "interisight_org_moid" {
-    value       = local.org_moid
-    description = "Organization in Intersight for Pod objects"
+  value       = local.org_moid
+  description = "Organization in Intersight for Pod objects"
 }
 
 output "pod_id" {
-    value       = local.pod_id
-    description = "Pod ID is used in all identifiers: MAC, WWNN, WWPN, UUID"
+  value       = local.pod_id
+  description = "Pod ID is used in all identifiers: MAC, WWNN, WWPN, UUID"
 }
 
 # output "domain_vmw_1_name" {

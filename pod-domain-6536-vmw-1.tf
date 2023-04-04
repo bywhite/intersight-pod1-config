@@ -6,22 +6,22 @@
 # # -----------------------------------------------------------------------------
 
 
-module "intersight_pod1_domain_1" {              # <-- change when copying domain
-  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536"  #?ref=v1.0.0"
+module "intersight_pod1_domain_1" {                                             # <-- change when copying domain
+  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536" #?ref=v1.0.0"
 
-# =============================================================================
-# External References
-# -----------------------------------------------------------------------------
-  organization    = local.org_moid
-  snmp_password = var.snmp_password
-  chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid 
+  # =============================================================================
+  # External References
+  # -----------------------------------------------------------------------------
+  organization             = local.org_moid
+  snmp_password            = var.snmp_password
+  chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid
 
-# =============================================================================
-# Naming and tagging
-# -----------------------------------------------------------------------------
+  # =============================================================================
+  # Naming and tagging
+  # -----------------------------------------------------------------------------
 
   # every policy created will have this prefix in its name
-  policy_prefix = "${local.pod_policy_prefix}-domain-1"                  # <-- change when copying domain
+  policy_prefix = "${local.pod_policy_prefix}-domain-1" # <-- change when copying domain
   description   = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
@@ -32,20 +32,20 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
     { "key" : "domain", "value" : "${local.pod_policy_prefix}-domain-1" } # <-- change when copying domain
   ]
 
-# =============================================================================
-# Chassis
-# -----------------------------------------------------------------------------
+  # =============================================================================
+  # Chassis
+  # -----------------------------------------------------------------------------
 
   chassis_9508_count = 5
-    # Default chassis count is 5
+  # Default chassis count is 5
   # chassis_imc_access_vlan    = 999
 
   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
 
-# =============================================================================
-# Fabric Interconnect 6536 Ethernet ports
-# -----------------------------------------------------------------------------
- # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
+  # =============================================================================
+  # Fabric Interconnect 6536 Ethernet ports
+  # -----------------------------------------------------------------------------
+  # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
   # switch_vlans_6536 = "100,101,102,313,314,997-999"
 
   #FI ports to be used for ethernet port channel uplink
@@ -57,7 +57,7 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
 
   # FI physical port numbers to be attached to chassis 
   # server_ports_6536 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-  
+
   # eth_aggr_server_ports = {
   #   "agg29-1"  = {  
   #       aggregate_port_id  = "29"
@@ -96,9 +96,9 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
   # VLAN Prefix ex: vlan   >> vlan-230
   # vlan_prefix = "vlan"
 
-# =============================================================================
-# Fabric Interconnect 6536 FC Ports and VSANs
-# -----------------------------------------------------------------------------
+  # =============================================================================
+  # Fabric Interconnect 6536 FC Ports and VSANs
+  # -----------------------------------------------------------------------------
   # 6536 FC capable ports are 33-36 (FC ports are on the right, slider starts at 36)
 
   # For each FC port, it is broken-out into 4x 32G FC Ports
@@ -122,8 +122,8 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
   #   { "aggport" : 36, "port" : 4 }
   # ]
 
-# VSAN Trunking is enabled by default. 
-# One or more VSANs are required for each FI
+  # VSAN Trunking is enabled by default. 
+  # One or more VSANs are required for each FI
 
   # Fabric A VSAN Set
   # fabric_a_vsan_sets = {
@@ -154,10 +154,10 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
   # }
 
 
-# =============================================================================
-# NTP, DNS and SNMP Settings
-# -----------------------------------------------------------------------------
- 
+  # =============================================================================
+  # NTP, DNS and SNMP Settings
+  # -----------------------------------------------------------------------------
+
   #ntp_servers   = ["ca.pool.ntp.org"]
   #ntp_timezone  = "America/Chicago"
 
@@ -165,10 +165,10 @@ module "intersight_pod1_domain_1" {              # <-- change when copying domai
   # dns_alternate = "8.8.4.4"
 
   #snmp_ip       = "10.10.10.10"
-  
-# The Pools for the Pod must be created before this domain fabric module executes
+
+  # The Pools for the Pod must be created before this domain fabric module executes
   depends_on = [
     module.imm_pool_mod, module.imm_pod_qos_mod
-]
+  ]
 
 }

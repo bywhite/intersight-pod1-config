@@ -14,31 +14,31 @@
 # https://intersight.com/an/settings/api-keys/
 ## Generate API key to obtain the API key and secret key
 variable "apikey" {
-    description = "API key for Intersight account"
-    type = string
+  description = "API key for Intersight account"
+  type        = string
 }
 
 variable "secretkey" {
-    description = "Filename that provides secret key for Intersight API"
-    type = string
+  description = "Filename that provides secret key for Intersight API"
+  type        = string
 }
 
 # This is the Intersight URL (could be URL to Intersight Private Virtual Appliance instead)
 variable "endpoint" {
-    description = "Intersight API endpoint"
-    type = string
-    default = "https://intersight.com"
+  description = "Intersight API endpoint"
+  type        = string
+  default     = "https://intersight.com"
 }
 
 # This is the target organization defined in Intersight to be configured
 variable "organization" {
-    type = string
-    default = "default"
+  type    = string
+  default = "default"
 }
 
 variable "imc_admin_password" {
-    type = string
+  type = string
 }
 variable "snmp_password" {
-    type = string
+  type = string
 }

@@ -18,25 +18,25 @@ terraform {
     }
   }
 
-    #Setting required version "=" to eliminate any future adverse behavior without testing first
-    required_providers {
-        intersight = {
-            source = "CiscoDevNet/intersight"
-            version = "=1.0.34"
-        }
+  #Setting required version "=" to eliminate any future adverse behavior without testing first
+  required_providers {
+    intersight = {
+      source  = "CiscoDevNet/intersight"
+      version = "=1.0.34"
     }
+  }
 }
 
 provider "intersight" {
-    apikey = var.apikey
-    secretkey = var.secretkey
-    endpoint = var.endpoint
+  apikey    = var.apikey
+  secretkey = var.secretkey
+  endpoint  = var.endpoint
 }
 
 #Organizations should be created manually in Intersight and changed below for each Data Center
 # Example Use:  org_moid = data.intersight_organization_organization.my_org.id
 data "intersight_organization_organization" "my_org" {
-    name = var.organization
+  name = var.organization
 }
 
 # IMM Code Examples Can Be Found at:

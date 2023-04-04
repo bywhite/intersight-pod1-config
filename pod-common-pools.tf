@@ -3,24 +3,24 @@
 
 module "imm_pool_mod" {
   source = "github.com/bywhite/intersight-pod1-modules//imm-pod-pools-mod"
-  
+
   # external sources
-  organization    = local.org_moid
+  organization = local.org_moid
 
   # every policy created will have this prefix in its name
   policy_prefix = local.pod_policy_prefix
   description   = local.description
 
-  ip_size     = "18"
-  ip_start = "192.168.21.100"
-  ip_gateway  = "192.168.21.1"
-  ip_netmask  = "255.255.255.0"
+  ip_size        = "18"
+  ip_start       = "192.168.21.100"
+  ip_gateway     = "192.168.21.1"
+  ip_netmask     = "255.255.255.0"
   ip_primary_dns = "192.168.60.7"
 
-  chassis_ip_size     = "4"
-  chassis_ip_start = "192.168.21.118"
-  chassis_ip_gateway  = "192.168.21.1"
-  chassis_ip_netmask  = "255.255.255.0"
+  chassis_ip_size        = "4"
+  chassis_ip_start       = "192.168.21.118"
+  chassis_ip_gateway     = "192.168.21.1"
+  chassis_ip_netmask     = "255.255.255.0"
   chassis_ip_primary_dns = "192.168.60.7"
 
   pod_id = local.pod_id
