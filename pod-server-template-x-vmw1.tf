@@ -33,7 +33,7 @@ module "server_template_vmw1" {                                   # <<-- Change 
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
     { "key" : "pod", "value" : "${local.pod_policy_prefix}" },
-    { "key" : "ServerGroup", "value" : "${local.pod_policy_prefix}-vmw1-srvgroup" } # <-- Change to duplicate template
+    { "key" : "ServerGroup", "value" : "${local.pod_policy_prefix}-vmw1" } # <-- Change to duplicate template
   ]
 
 # =============================================================================
