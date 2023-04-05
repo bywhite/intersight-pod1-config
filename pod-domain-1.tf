@@ -1,8 +1,8 @@
 # # =============================================================================
-# # This defines the desired configuration of a UCS IMM domain
+# # UCS 6536-FI Domain  (Config File)
 # # 
-# # Builds: Domain Cluster, Switch, and Chassis Profiles & their Policies
-# #         configured for 6536 FI and 9508 chassis (May work with 5108 chassis)
+# # Builds: Domain Cluster, Switch Profiles, X-Series Chassis Profiles and Policies
+# #     
 # # -----------------------------------------------------------------------------
 
 
