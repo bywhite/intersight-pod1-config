@@ -2,6 +2,12 @@
 # Creating servers in Intersight using Terraform Cloud for Business
 
 This terraform plan for Intersight can create multiple IMM domains.
+This module supports tagging with github
+-  git tag -a v1.1.0 -m "Intersight IaC Enterprise Ops v1.1.0"
+-  git push origin --tags
+- within Module code, versioning can be specified for smoother transitioning to updated modules:
+    source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod?ref=v1.1.0"
+
 
 To keep the code simple and compact, it references an Intersight policy bundle here:
 https://github.com/bywhite/intersight-pod1-modules
