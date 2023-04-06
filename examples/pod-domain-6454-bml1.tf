@@ -8,7 +8,7 @@
 
 module "intersight_pod1_domain_5" {
   #source = "github.com/pl247/tf-intersight-policy-bundle"
-  source = "github.com/bywhite/cen-iac-imm-dev-pod1-mods/imm-domain-fabric-6454-mod" #?ref=v1.2.0"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6454-mod" #?ref=v1.2.0"
 
 # =============================================================================
 # Org external references
