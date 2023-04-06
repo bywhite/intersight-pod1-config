@@ -98,25 +98,20 @@ module "server_template_1" {                                   # <<-- Change to 
   }
 
  
-# =============================================================================
-# Server monitoring configurations
-# -----------------------------------------------------------------------------
-# All values could be set with Local's or Variables
+# # =============================================================================
+# # Server SNMP configurations
+# # -----------------------------------------------------------------------------
 
- # SNMP
-  snmp_ip       = "10.10.10.10"
-  snmp_password = "Cisco123"              #Recommend adding var to TFCB Workspace
+  snmp_password = var.snmp_password            #Variable set in TFCB Workspace
   
-  # SysLog 
-  syslog_remote_ip = "10.10.10.10"
 
 # =============================================================================
 # Local IMC Users - defined pod wide
 # -----------------------------------------------------------------------------
   # Sets local users and their permissions and passwords
   user_policy_moid          = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
-  imc_access_vlan           = 21
-  server_imc_admin_password = "C1sc0123!"  #Recommend adding var to TFCB Workspace
+ # imc_access_vlan           = 21
+  server_imc_admin_password = var.server_imc_admin_password  #Set by TFCB Workspace
 
 
 # =============================================================================
