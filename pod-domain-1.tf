@@ -1,10 +1,8 @@
 # # =============================================================================
-# # UCS 6536-FI Domain  (Config File)
+# # UCS 6536-FI Domain with 9508 Chassis  (Config File)
 # # 
-# # Builds: Domain Cluster, Switch Profiles, X-Series Chassis Profiles and Policies
-# #     
+# # Builds: Domain Profile with Chassis Profiles and their Policies
 # # -----------------------------------------------------------------------------
-
 
 module "intersight_pod1_domain_1" {                                             # <-- change when copying domain
   source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod?ref=v1.1.0"
@@ -12,9 +10,9 @@ module "intersight_pod1_domain_1" {                                             
   # =============================================================================
   # External References
   # -----------------------------------------------------------------------------
-  organization             = local.org_moid
+  organization             = local.org_moid      #Intersight Organaization to use
   snmp_password            = var.snmp_password
-  chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid
+  chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid #use common
 
   # =============================================================================
   # Naming and tagging
@@ -36,8 +34,7 @@ module "intersight_pod1_domain_1" {                                             
   # Chassis
   # -----------------------------------------------------------------------------
 
-  chassis_9508_count = 5
-  # Default chassis count is 5
+  chassis_9508_count = 5        # Default chassis count is 5
 
 
 
@@ -48,10 +45,13 @@ module "intersight_pod1_domain_1" {                                             
 
 
 
+# ** The following are "EXTRA" attributes that can be set by Operations User **
 
 
-  # chassis_imc_access_vlan    = 999
-  # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
+  # =============================================================================
+  # Chassis Options
+  # -----------------------------------------------------------------------------
+  # chassis_imc_access_vlan    = 999   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
 
   # =============================================================================
   # Fabric Interconnect 6536 Ethernet ports
