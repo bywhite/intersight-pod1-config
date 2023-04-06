@@ -10,7 +10,7 @@
 # # -----------------------------------------------------------------------------
 
 
-module "server_template_vmw1" {                                   # <<-- Change to duplicate template
+module "server_template_1" {                                   # <<-- Change to duplicate template
   source = "github.com/bywhite/intersight-pod1-modules//imm-pod-servers"
             # remote module name above should not be changed when duplicating
 
@@ -23,7 +23,6 @@ module "server_template_vmw1" {                                   # <<-- Change 
 # =============================================================================
 # Naming and tagging
 # -----------------------------------------------------------------------------
-
   # prefix for all created policies
   server_policy_prefix = "${local.pod_policy_prefix}-vmw1"         # <<-- Change to duplicate template
   description   = "built by Terraform ${local.pod_policy_prefix}"
@@ -43,9 +42,8 @@ module "server_template_vmw1" {                                   # <<-- Change 
   is_x_series_profile = true 
 
 # =============================================================================
-# Pod-wide pools
+# Pod Common Pools
 # -----------------------------------------------------------------------------
-
   mac_pool_moid     = module.imm_pool_mod.mac_pool_moid
   imc_ip_pool_moid  = module.imm_pool_mod.ip_pool_moid
   wwnn_pool_moid    = module.imm_pool_mod.wwnn_pool_moid
