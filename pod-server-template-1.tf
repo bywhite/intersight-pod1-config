@@ -44,11 +44,11 @@ module "server_template_1" {                                   # <<-- Change to 
 # =============================================================================
 # Pod Common Pools
 # -----------------------------------------------------------------------------
-  mac_pool_moid     = module.imm_pool_mod.mac_pool_moid
-  imc_ip_pool_moid  = module.imm_pool_mod.ip_pool_moid
-  wwnn_pool_moid    = module.imm_pool_mod.wwnn_pool_moid
-  wwpn_pool_a_moid  = module.imm_pool_mod.wwpn_pool_a_moid
-  wwpn_pool_b_moid  = module.imm_pool_mod.wwpn_pool_b_moid
+  mac_pool_moid            = module.imm_pool_mod.mac_pool_moid
+  imc_ip_pool_moid         = module.imm_pool_mod.ip_pool_moid
+  wwnn_pool_moid           = module.imm_pool_mod.wwnn_pool_moid
+  wwpn_pool_a_moid         = module.imm_pool_mod.wwpn_pool_a_moid
+  wwpn_pool_b_moid         = module.imm_pool_mod.wwpn_pool_b_moid
   server_uuid_pool_moid    = module.imm_pool_mod.uuid_pool_moid
   server_uuid_pool_name    = module.imm_pool_mod.uuid_pool_name
 
@@ -60,7 +60,7 @@ module "server_template_1" {                                   # <<-- Change to 
 
   vnic_vlan_sets = {
     "eth0"  = {
-      vnic_name  = "eth0"
+      vnic_name   = "eth0"
       native_vlan = 21
       vlan_range  = "21,60,254,255"
       switch_id   = "A"
@@ -99,20 +99,17 @@ module "server_template_1" {                                   # <<-- Change to 
 
  
 # # =============================================================================
-# # Server SNMP configurations
+# # Server Password configurations - Password variable set in TFCB Workspace
 # # -----------------------------------------------------------------------------
 
-  snmp_password = var.snmp_password            #Variable set in TFCB Workspace
-  
+  snmp_password             = var.snmp_password
+  server_imc_admin_password = var.imc_admin_password
 
 # =============================================================================
 # Local IMC Users - defined pod wide
 # -----------------------------------------------------------------------------
-  # Sets local users and their permissions and passwords
-  user_policy_moid          = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
- # imc_access_vlan           = 21
-  server_imc_admin_password = var.server_imc_admin_password  #Set by TFCB Workspace
 
+  user_policy_moid = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
 
 # =============================================================================
 # Dependencies
