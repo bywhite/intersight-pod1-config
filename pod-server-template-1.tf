@@ -1,47 +1,46 @@
 # # =============================================================================
 # # This defines a single Server Profile Template using a remote module
-# # Builds: Server Profile Template and associated Server Resource Pool
 # #    * Note: Derivation of Server Profiles is outside of TF scope
-# # Duplicate this code/file to add another new Server Template and:
-# #    * Change module: "server_template_vmwX"  >> "server_template_vmwY"
-# #    * Change server_policy_prefix: "...-vmwX" > "...-vmwY"
+# # Duplicate this code/file to add another Server Template and
+# #    * Change module alias: "server_template_1"  >> "server_template_2"
+# #    * Change server_policy_prefix: "...-vmw1" > "...-vmw2"
 # #    * Change Tag value for "ServerGroup" to include new name
 # #    * Modify parameters as needed to tweak your template configuration
 # # -----------------------------------------------------------------------------
 
 
-module "server_template_1" {                                   # <<-- Change to duplicate template
+module "server_template_1" {                                                  # <<-- Change to duplicate template
   source = "github.com/bywhite/intersight-pod1-modules//imm-pod-servers"
             # remote module name above should not be changed when duplicating
 
 # =============================================================================
 # External Common References
 # -----------------------------------------------------------------------------
-  organization             = local.org_moid      #Intersight Organaization to use
-  mac_pool_moid            = module.imm_pool_mod.mac_pool_moid
-  imc_ip_pool_moid         = module.imm_pool_mod.ip_pool_moid
-  wwnn_pool_moid           = module.imm_pool_mod.wwnn_pool_moid
-  wwpn_pool_a_moid         = module.imm_pool_mod.wwpn_pool_a_moid
-  wwpn_pool_b_moid         = module.imm_pool_mod.wwpn_pool_b_moid
-  server_uuid_pool_moid    = module.imm_pool_mod.uuid_pool_moid
-  server_uuid_pool_name    = module.imm_pool_mod.uuid_pool_name
+  organization              = local.org_moid      #Intersight Organaization to use
+  mac_pool_moid             = module.imm_pool_mod.mac_pool_moid
+  imc_ip_pool_moid          = module.imm_pool_mod.ip_pool_moid
+  wwnn_pool_moid            = module.imm_pool_mod.wwnn_pool_moid
+  wwpn_pool_a_moid          = module.imm_pool_mod.wwpn_pool_a_moid
+  wwpn_pool_b_moid          = module.imm_pool_mod.wwpn_pool_b_moid
+  server_uuid_pool_moid     = module.imm_pool_mod.uuid_pool_moid
+  server_uuid_pool_name     = module.imm_pool_mod.uuid_pool_name
   snmp_password             = var.snmp_password
   server_imc_admin_password = var.imc_admin_password
-  user_policy_moid = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
+  user_policy_moid          = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
 
 # =============================================================================
 # Naming and tagging
 # -----------------------------------------------------------------------------
   # prefix for all created policies
-  server_policy_prefix = "${local.pod_policy_prefix}-vmw1"         # <<-- Change to duplicate template
-  description   = "built by Terraform ${local.pod_policy_prefix}"
+  server_policy_prefix = "${local.pod_policy_prefix}-vmw1"                    # <<-- Change to duplicate template
+  description          = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
   tags = [
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
     { "key" : "pod", "value" : "${local.pod_policy_prefix}" },
-    { "key" : "ServerGroup", "value" : "${local.pod_policy_prefix}-vmw1" } # <-- Change to duplicate template
+    { "key" : "ServerTemplate", "value" : "${local.pod_policy_prefix}-vmw1" }  # <-- Change to duplicate template
   ]
 
 # =============================================================================
@@ -49,12 +48,6 @@ module "server_template_1" {                                   # <<-- Change to 
 # -----------------------------------------------------------------------------
 # Customize policies for X-Series (true) or B-Series (false)
   is_x_series_profile = true 
-
-
-
-
-
-
 
 # =============================================================================
 # Server Eth vNic's & FC vHBA's Options
