@@ -8,7 +8,7 @@ module "intersight_pod1_domain_1" {                                             
   source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod?ref=v1.1.0"
 
   # =============================================================================
-  # External References
+  # External Common References
   # -----------------------------------------------------------------------------
   organization             = local.org_moid      #Intersight Organaization to use
   snmp_password            = var.snmp_password
@@ -18,9 +18,9 @@ module "intersight_pod1_domain_1" {                                             
   # Naming and tagging
   # -----------------------------------------------------------------------------
 
-  # every policy created will have this prefix in its name
+  # every policy created for this domain will have this prefix in its name
   policy_prefix = "${local.pod_policy_prefix}-domain-1"                           # <-- change when copying domain
-  description   = "built by Terraform ${local.pod_policy_prefix}"
+  description   = "built by Terraform for ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
   tags = [
@@ -31,10 +31,10 @@ module "intersight_pod1_domain_1" {                                             
   ]
 
   # =============================================================================
-  # Chassis
+  # X-Series Chassis
   # -----------------------------------------------------------------------------
 
-  chassis_9508_count = 10       # Default chassis count is 5
+  chassis_9508_count = 2       # Default chassis count is 5
 
 
 
@@ -45,7 +45,7 @@ module "intersight_pod1_domain_1" {                                             
 
 
 
-# ** The following are "EXTRA" attributes that can be set by Operations User **
+# ** The following are "Optional" attributes that can override defaults **
 
 
   # =============================================================================

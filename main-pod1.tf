@@ -1,10 +1,10 @@
 # ==========================================================================================
-# The purpose of this module is to create a Pod of Multiple IMM Domains
-# The Pod is similar to a VPC in that it has shared networks & storage
+# The purpose of this module is to create a single Pod of Multiple IMM Domains
+# The Pod is similar to a VPC in that it has shared network & storage resources
 # The pod uses a common set of large pools of identifiers (UUID, MAC, WWNN, WWPN, IMC-IP's)
-#     - pod-domain config files define each IMM domain
-#     - pod-pools config file defines the pod-wide identity pools
-#     - pod-srv-template config files create template based server profiles
+#     - pod-domain config files define each IMM domain with its chassis
+#     - pod-common config file defines the pod-wide shared pools and policies (like QoS, IMC Users)
+#     - pod-srv-template config files create server profile templates
 # ------------------------------------------------------------------------------------------
 
 

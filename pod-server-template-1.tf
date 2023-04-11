@@ -15,10 +15,19 @@ module "server_template_1" {                                   # <<-- Change to 
             # remote module name above should not be changed when duplicating
 
 # =============================================================================
-# Org external references
+# External Common References
 # -----------------------------------------------------------------------------
-  # external sources
-  organization    = local.org_moid
+  organization             = local.org_moid      #Intersight Organaization to use
+  mac_pool_moid            = module.imm_pool_mod.mac_pool_moid
+  imc_ip_pool_moid         = module.imm_pool_mod.ip_pool_moid
+  wwnn_pool_moid           = module.imm_pool_mod.wwnn_pool_moid
+  wwpn_pool_a_moid         = module.imm_pool_mod.wwpn_pool_a_moid
+  wwpn_pool_b_moid         = module.imm_pool_mod.wwpn_pool_b_moid
+  server_uuid_pool_moid    = module.imm_pool_mod.uuid_pool_moid
+  server_uuid_pool_name    = module.imm_pool_mod.uuid_pool_name
+  snmp_password             = var.snmp_password
+  server_imc_admin_password = var.imc_admin_password
+  user_policy_moid = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
 
 # =============================================================================
 # Naming and tagging
@@ -41,16 +50,11 @@ module "server_template_1" {                                   # <<-- Change to 
 # Customize policies for X-Series (true) or B-Series (false)
   is_x_series_profile = true 
 
-# =============================================================================
-# Pod Common Pools
-# -----------------------------------------------------------------------------
-  mac_pool_moid            = module.imm_pool_mod.mac_pool_moid
-  imc_ip_pool_moid         = module.imm_pool_mod.ip_pool_moid
-  wwnn_pool_moid           = module.imm_pool_mod.wwnn_pool_moid
-  wwpn_pool_a_moid         = module.imm_pool_mod.wwpn_pool_a_moid
-  wwpn_pool_b_moid         = module.imm_pool_mod.wwpn_pool_b_moid
-  server_uuid_pool_moid    = module.imm_pool_mod.uuid_pool_moid
-  server_uuid_pool_name    = module.imm_pool_mod.uuid_pool_name
+
+
+
+
+
 
 # =============================================================================
 # Server Eth vNic's & FC vHBA's
@@ -98,19 +102,6 @@ module "server_template_1" {                                   # <<-- Change to 
   }
 
  
-# # =============================================================================
-# # Server Password configurations - Password variable set in TFCB Workspace
-# # -----------------------------------------------------------------------------
-
-  snmp_password             = var.snmp_password
-  server_imc_admin_password = var.imc_admin_password
-
-# =============================================================================
-# Local IMC Users - defined pod wide
-# -----------------------------------------------------------------------------
-
-  user_policy_moid = intersight_iam_end_point_user_policy.pod_user_policy_1.moid
-
 # =============================================================================
 # Dependencies
 # -----------------------------------------------------------------------------
