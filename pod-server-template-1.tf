@@ -57,7 +57,7 @@ module "server_template_1" {                                   # <<-- Change to 
 
 
 # =============================================================================
-# Server Eth vNic's & FC vHBA's
+# Server Eth vNic's & FC vHBA's Options
 # -----------------------------------------------------------------------------
 # Ensure "pci_order is unique and sequential across all vnic/vhba"
 # Ensure vlans & vsans are provisioned on target UCS Domain, use depends_on
