@@ -36,6 +36,9 @@ Lastly as equipment becomes available, associate profiles with physical equipmen
     - api_key = the API Key ID you create in Intersight using version 2
     - secretkey (make sensitive) = the secretkey of your Intersight API key
     - endpoint = https://intersight.com    (a private appliance would have its own DNS name)
+    - imc_admin_password = your choice of passwords for accessing IMC on servers with admin account
+    - snmp_password      = your choice to match snmp monitoring environment
+    = organization       = your "pre-defined" organization in Intersight where objects will be created by Terraform
 
 ### Note about Terraform destroy
 
