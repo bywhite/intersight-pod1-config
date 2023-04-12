@@ -5,6 +5,7 @@
 #     - pod-domain config files define each IMM domain with its chassis
 #     - pod-common config file defines the pod-wide shared pools and policies (like QoS, IMC Users)
 #     - pod-srv-template config files create server profile templates
+# When Pod folder copied, change pod name and ID in locals.tf
 # ------------------------------------------------------------------------------------------
 
 

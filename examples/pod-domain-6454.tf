@@ -6,22 +6,22 @@
 # # -----------------------------------------------------------------------------
 
 
-module "intersight_pod1_domain_5" {                                         # <-- change when copying domain
-  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6454-mod" #?ref=v1.2.0"
+module "intersight_pod1_domain_5" {                                            # <-- Change when copied
+  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6454-mod" #?ref=v1.1.0"
 
 # =============================================================================
 # Org external references
 # -----------------------------------------------------------------------------
 
   # external sources
-  organization    = local.org_moid
+  organization = local.org_moid
 
 # =============================================================================
 # Naming and tagging
 # -----------------------------------------------------------------------------
 
   # every policy created will have this prefix in its name
-  policy_prefix = "${local.pod_policy_prefix}-bml1"                           # <-- change when copying domain
+  policy_prefix = "${local.pod_policy_prefix}-bml5"                            # <-- Change when copied
   description   = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
@@ -29,7 +29,7 @@ module "intersight_pod1_domain_5" {                                         # <-
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
     { "key" : "pod", "value" : "${local.pod_policy_prefix}" },
-    { "key" : "domain", "value" : "${local.pod_policy_prefix}-bml1" }         # <-- change when copying domain
+    { "key" : "domain", "value" : "${local.pod_policy_prefix}-bml5" }          # <-- Change when copied
   ]
 
 
