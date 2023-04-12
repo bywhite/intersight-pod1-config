@@ -10,7 +10,7 @@
 
 
 module "server_template_1" {                                                  # <<-- Change to duplicate template
-  source = "github.com/bywhite/intersight-pod1-modules//imm-pod-servers"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-pod-servers"  #?ref=v1.1.1"
             # remote module name above should not be changed when duplicating
 
 # =============================================================================
