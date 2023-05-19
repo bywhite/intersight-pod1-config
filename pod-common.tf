@@ -292,17 +292,17 @@ module "imm_pool_mod" {
   policy_prefix = local.pod_policy_prefix
   description   = local.description
 
-  ip_size        = "18"
-  ip_start       = "192.168.21.100"
-  ip_gateway     = "192.168.21.1"
+  ip_size        = "8"
+  ip_start       = "198.18.0.100"
+  ip_gateway     = "198.18.0.1"
   ip_netmask     = "255.255.255.0"
-  ip_primary_dns = "192.168.60.7"
+  ip_primary_dns = "198.18.133.1"
 
-  chassis_ip_size        = "4"
-  chassis_ip_start       = "192.168.21.118"
-  chassis_ip_gateway     = "192.168.21.1"
+  chassis_ip_size        = "2"
+  chassis_ip_start       = "198.18.0.108"
+  chassis_ip_gateway     = "198.18.0.1"
   chassis_ip_netmask     = "255.255.255.0"
-  chassis_ip_primary_dns = "192.168.60.7"
+  chassis_ip_primary_dns = "198.18.133.1"
 
   pod_id = local.pod_id
   # used to create moids for Pools: MAC, WWNN, WWPN

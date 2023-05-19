@@ -5,7 +5,8 @@
 # # -----------------------------------------------------------------------------
 
 module "intersight_pod1_domain_1" {                                             # <-- Change when copied
-  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod?ref=v1.1.0"
+  source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6536-mod" #?ref=v1.1.0"
+  # Valid Versions: v1.1.0, v1.1.1 
 
   # =============================================================================
   # External Common References
@@ -19,7 +20,7 @@ module "intersight_pod1_domain_1" {                                             
   # -----------------------------------------------------------------------------
 
   # every policy created for this domain will have this prefix in its name
-  policy_prefix = "${local.pod_policy_prefix}-domain-1"                           # <-- Change when copied
+  policy_prefix = "${local.pod_policy_prefix}-vmw1"                           # <-- Change when copied
   description   = "built by Terraform for ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
