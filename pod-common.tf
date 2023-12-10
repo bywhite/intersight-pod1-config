@@ -325,6 +325,5 @@ module "imm_pool_mod" {
   tags = [
     { "key" : "Environment", "value" : "dev" },
     { "key" : "Orchestrator", "value" : "Terraform" },
-    { "key" : "pod", "value" : "ofl-dev-pod1" }
   ]
 }
