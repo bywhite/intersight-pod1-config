@@ -60,7 +60,7 @@ module "intersight_pod1_domain_2" {                                            #
 # =============================================================================
 # Fabric Interconnect 6454 FC Ports and VSANs
 # -----------------------------------------------------------------------------
-    #6454 FC ports start at Port 1 up to 16 (FC on left of slider)
+    #6454 & 64108 FC ports start at Port 1 up to 16 (FC on left of slider)
 
   # A value of 8 results in 8x 32G FC Port from ports 1 to 8
   fc_port_count_6454 = 8
@@ -69,18 +69,21 @@ module "intersight_pod1_domain_2" {                                            #
   fc_uplink_pc_vsan_id_a = 100
   fc_uplink_pc_vsan_id_b = 200
 
-  
+  #dCloud Config
+  #   fc_port_channel_6454 = [
+  #   { "aggport" : 0, "port" : 1 },
+  #   { "aggport" : 0, "port" : 2 },
+  #   { "aggport" : 0, "port" : 3 },
+  #   { "aggport" : 0, "port" : 4 },
+  #   { "aggport" : 0, "port" : 5 },
+  #   { "aggport" : 0, "port" : 6 },
+  #   { "aggport" : 0, "port" : 7 },
+  #   { "aggport" : 0, "port" : 8 }
+  # ]
     fc_port_channel_6454 = [
     { "aggport" : 0, "port" : 1 },
-    { "aggport" : 0, "port" : 2 },
-    { "aggport" : 0, "port" : 3 },
-    { "aggport" : 0, "port" : 4 },
-    { "aggport" : 0, "port" : 5 },
-    { "aggport" : 0, "port" : 6 },
-    { "aggport" : 0, "port" : 7 },
-    { "aggport" : 0, "port" : 8 }
+    { "aggport" : 0, "port" : 3 }
   ]
-
 
 # VSAN Trunking is enabled by default. One or more VSANs are required for each FI
 
@@ -91,11 +94,11 @@ module "intersight_pod1_domain_2" {                                            #
       fcoe_number   = 1000
       switch_id      = "A"
     }
-    "vsan101"  = {
-      vsan_number   = 101
-      fcoe_number   = 1001
-      switch_id      = "A"
-    }
+    # "vsan101"  = {
+    #   vsan_number   = 101
+    #   fcoe_number   = 1001
+    #   switch_id      = "A"
+    # }
   }
 
   # Fabric B VSAN Set
@@ -105,11 +108,11 @@ module "intersight_pod1_domain_2" {                                            #
       fcoe_number   = 2000
       switch_id      = "B"
     }
-    "vsan201"  = {
-      vsan_number   = 201
-      fcoe_number   = 2001
-      switch_id      = "B"
-    }
+    # "vsan201"  = {
+    #   vsan_number   = 201
+    #   fcoe_number   = 2001
+    #   switch_id      = "B"
+    # }
   }
 
 # =============================================================================
@@ -117,7 +120,7 @@ module "intersight_pod1_domain_2" {                                            #
 # -----------------------------------------------------------------------------
 
   chassis_9508_count       = 2
-  chassis_imc_access_vlan  = 10
+  chassis_imc_access_vlan  = 101     #dcloud is 10   richfield aci-kvm is 101
   chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid 
   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
   # Need chassis_imc_access_password from TFCB Workspace Variable
@@ -127,7 +130,8 @@ module "intersight_pod1_domain_2" {                                            #
 # -----------------------------------------------------------------------------
 
   # ntp_servers   = ["ca.pool.ntp.org"]
-  ntp_servers   = ["198.18.128.1"]
+  # ntp_servers   = ["198.18.128.1"]   #dcloud
+  ntp_servers   = ["10.101.128.15"]  #richfield
   ntp_timezone  = "America/New_York"
 
   dns_preferred = "198.18.133.1"
