@@ -292,17 +292,32 @@ module "imm_pool_mod" {
   policy_prefix = local.pod_policy_prefix
   description   = local.description
 
-  ip_size        = "8"
-  ip_start       = "198.18.0.100"
-  ip_gateway     = "198.18.0.1"
+#IP's used for Richfield Lab ACI-KVM-InBand
+  ip_size        = "4"
+  ip_start       = "198.18.101.90"
+  ip_gateway     = "198.18.101.254"
   ip_netmask     = "255.255.255.0"
-  ip_primary_dns = "198.18.133.1"
+  ip_primary_dns = "10.101.128.15"
 
   chassis_ip_size        = "2"
-  chassis_ip_start       = "198.18.0.108"
-  chassis_ip_gateway     = "198.18.0.1"
+  chassis_ip_start       = "198.18.101.94"
+  chassis_ip_gateway     = "198.18.101.254"
   chassis_ip_netmask     = "255.255.255.0"
-  chassis_ip_primary_dns = "198.18.133.1"
+  chassis_ip_primary_dns = "10.101.128.16"
+
+
+# IP's used for dCloud Demo Environment
+  # ip_size        = "8"
+  # ip_start       = "198.18.0.100"
+  # ip_gateway     = "198.18.0.1"
+  # ip_netmask     = "255.255.255.0"
+  # ip_primary_dns = "198.18.133.1"
+
+  # chassis_ip_size        = "2"
+  # chassis_ip_start       = "198.18.0.108"
+  # chassis_ip_gateway     = "198.18.0.1"
+  # chassis_ip_netmask     = "255.255.255.0"
+  # chassis_ip_primary_dns = "198.18.133.1"
 
   pod_id = local.pod_id
   # used to create moids for Pools: MAC, WWNN, WWPN
