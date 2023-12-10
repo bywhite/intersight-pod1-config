@@ -6,7 +6,7 @@
 # # -----------------------------------------------------------------------------
 
 
-module "intersight_pod1_domain_5" {                                            # <-- Change when copied
+module "intersight_pod1_domain_2" {                                            # <-- Change when copied
   source = "github.com/bywhite/intersight-pod1-modules//imm-domain-fabric-6454-mod" #?ref=v1.1.0"
 
 # =============================================================================
@@ -38,20 +38,24 @@ module "intersight_pod1_domain_5" {                                            #
 # =============================================================================
 # Fabric Interconnect 6545 Ethernet ports
 # -----------------------------------------------------------------------------
+# Configured for dCloud FI's
 
   #FI ports to be used for ethernet port channel uplink
-  port_channel_6454 = [48]
+  # port_channel_6454 = [48]   #dcloud
+  port_channel_6454 = [105]   # Richfield 64108
   #  port_channel_6454 = [49,50,51,52]
 
   # FI physical port numbers to be attached to chassis 
-  server_ports_6454 = [17,18]
+  # server_ports_6454 = [17,18]  #dcloud
+  server_ports_6454 = [65,67]    # Richfiled 64108
   #server_ports_6454 = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
 
   # VLAN Prefix ex: vlan   >> name is: vlan-230
   vlan_prefix = "vlan"
 
   # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
-  switch_vlans_6454 = "5-7,10"
+  # switch_vlans_6454 = "5-7,10" #dcloud
+  switch_vlans_6454 = "101-103, 201-250, 1000-1199"  # Richfield
 
 # =============================================================================
 # Fabric Interconnect 6454 FC Ports and VSANs
