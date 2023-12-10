@@ -32,7 +32,7 @@ module "server_template_1" {                                                  # 
 # Naming and tagging
 # -----------------------------------------------------------------------------
   # prefix for all created policies
-  server_policy_prefix = "${local.pod_policy_prefix}-spt01"                    # <<-- Change to duplicate template
+  server_policy_prefix = "${local.pod_policy_prefix}-spt-01"                    # <<-- Change to duplicate template
   description          = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
