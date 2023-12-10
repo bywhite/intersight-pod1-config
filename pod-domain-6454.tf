@@ -21,7 +21,7 @@ module "intersight_pod1_domain_5" {                                            #
 # -----------------------------------------------------------------------------
 
   # every policy created will have this prefix in its name
-  policy_prefix = "${local.pod_policy_prefix}-bml5"                            # <-- Change when copied
+  policy_prefix = "${local.pod_policy_prefix}-dom2"                            # <-- Change when copied
   description   = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
@@ -29,12 +29,11 @@ module "intersight_pod1_domain_5" {                                            #
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
     { "key" : "pod", "value" : "${local.pod_policy_prefix}" },
-    { "key" : "domain", "value" : "${local.pod_policy_prefix}-bml5" }          # <-- Change when copied
   ]
 
 #FI Assignments
-fi_a_sn = "FDO244000GQ"
-fi_b_sn = "FDO2440009A"
+# fi_a_sn = "FDO244000GQ"
+# fi_b_sn = "FDO2440009A"
 
 # =============================================================================
 # Fabric Interconnect 6545 Ethernet ports
