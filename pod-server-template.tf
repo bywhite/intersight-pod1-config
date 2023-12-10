@@ -32,15 +32,14 @@ module "server_template_1" {                                                  # 
 # Naming and tagging
 # -----------------------------------------------------------------------------
   # prefix for all created policies
-  server_policy_prefix = "${local.pod_policy_prefix}-vmw1"                    # <<-- Change to duplicate template
+  server_policy_prefix = "${local.pod_policy_prefix}-spt01"                    # <<-- Change to duplicate template
   description          = "built by Terraform ${local.pod_policy_prefix}"
 
   #Every object created in the domain will have these tags
   tags = [
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
-    { "key" : "pod", "value" : "${local.pod_policy_prefix}" },
-    { "key" : "ServerTemplate", "value" : "${local.pod_policy_prefix}-vmw1" }  # <-- Change to duplicate template
+    { "key" : "pod", "value" : "${local.pod_policy_prefix}" }
   ]
 
 # =============================================================================
@@ -58,16 +57,16 @@ module "server_template_1" {                                                  # 
   vnic_vlan_sets = {
     "eth0"  = {
       vnic_name   = "eth0"
-      native_vlan = 10
-      vlan_range  = "5-7,10,100"
+      native_vlan = 101
+      vlan_range  = "101-103"
       switch_id   = "A"
       pci_order   = 0
       qos_moid    = module.imm_pod_qos_mod.vnic_qos_besteffort_moid
     }
     "eth1"  = {
       vnic_name   = "eth1"
-      native_vlan = 10
-      vlan_range  = "5-7,10,100"
+      native_vlan = 101
+      vlan_range  = "101-103"
       switch_id   = "B"
       pci_order   = 1
       qos_moid    = module.imm_pod_qos_mod.vnic_qos_besteffort_moid
@@ -94,7 +93,7 @@ module "server_template_1" {                                                  # 
     }
   }
 
-  imc_access_vlan = 10
+  imc_access_vlan = 101
 
 # =============================================================================
 # Dependencies
