@@ -55,7 +55,7 @@ module "intersight_pod1_domain_2" {                                            #
 
   # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
   # switch_vlans_6454 = "5-7,10" #dcloud
-  switch_vlans_6454 = "101-103, 201-250, 1000-1199"  # Richfield
+  switch_vlans_6454 = "101-103,201-250,1000-1199"  # Richfield "101-103,201-250,1000-1199"
 
 # =============================================================================
 # Fabric Interconnect 6454 FC Ports and VSANs
