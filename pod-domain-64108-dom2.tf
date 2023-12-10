@@ -34,6 +34,7 @@ module "intersight_pod1_domain_2" {                                            #
 #FI Assignments
 # fi_a_sn = "FDO244000GQ"
 # fi_b_sn = "FDO2440009A"
+fi_model = "UCS-FI-64108"   # Options "UCS-FI-6454" or "UCS-FI-64108"
 
 # =============================================================================
 # Fabric Interconnect 6545 Ethernet ports
