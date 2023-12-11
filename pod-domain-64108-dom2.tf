@@ -120,7 +120,7 @@ fi_model = "UCS-FI-64108"   # Options "UCS-FI-6454" or "UCS-FI-64108"
 # Chassis
 # -----------------------------------------------------------------------------
 
-  chassis_9508_count       = 2
+  chassis_9508_count       = 1
   chassis_imc_access_vlan  = 101     #dcloud is 10   richfield aci-kvm is 101
   chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid 
   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)
