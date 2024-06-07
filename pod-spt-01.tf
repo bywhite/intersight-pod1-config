@@ -101,7 +101,7 @@ module "server_template_1" {                                                  # 
 # The Pools for the Pod must be created before this domain fabric module executes
   depends_on = [
     module.imm_pool_mod, intersight_iam_end_point_user_policy.pod_user_policy_1,
-    module.imm_pod_qos_mod, module.intersight_pod1_domain_2,
+    module.imm_pod_qos_mod, module.intersight_pod1_dcloud,
     intersight_vnic_fc_network_policy.fc_vsan_100, intersight_vnic_fc_network_policy.fc_vsan_200
   ]
 
